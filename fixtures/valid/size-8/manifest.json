@@ -1,0 +1,15 @@
+{
+  "profile": "sar-ri-fixture-set-v0.2",
+  "tree_size": "8",
+  "root": "sha256:630655a4dfc87711bec7130a594c293471eb2e352ca5b3d088c6205af9419daa",
+  "receipt_files": [
+    "receipt-0.json",
+    "receipt-1.json",
+    "receipt-2.json",
+    "receipt-3.json",
+    "receipt-4.json",
+    "receipt-5.json",
+    "receipt-6.json",
+    "receipt-7.json"
+  ]
+}

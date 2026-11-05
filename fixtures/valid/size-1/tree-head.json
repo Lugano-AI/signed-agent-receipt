@@ -1,0 +1,10 @@
+{
+  "head": {
+    "profile": "sar-ri-tree-head-v0.2",
+    "log_id": "fixture-log-v02",
+    "algorithm": "Ed25519",
+    "tree_size": "1",
+    "root": "sha256:0dd622acf657cbd726fc13d11917a82384da024766a28f664c0c34bce2b1aca0"
+  },
+  "signature": "xjVw5nokm2PR4D1OU6QMRaz4S4W7lXrtB-PNwFhtjzjcx5Twg5bdIx3Rvh-ocsJFvsfR92MOEuP8T3GrLRXsCQ"
+}

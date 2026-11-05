@@ -1,0 +1,49 @@
+{
+  "statement": {
+    "profile": "sar-ri-statement-v0.2",
+    "issuer": {
+      "algorithm": "Ed25519",
+      "key_id": "fixture-issuer-v02"
+    },
+    "receipt": {
+      "receipt_id": "fixture-17-15",
+      "log_id": "fixture-log-v02",
+      "assertions": {
+        "runtime_artifact": "sha256:6fb7db7900e55289b34699183ca8e0c9f6a209deacea13335e03afdf70dc7da5",
+        "policy_artifact": "sha256:abc3a6157d2fc70c68d7daa646b1cc441a6cd0d60700ee23132b9d34493a7355"
+      },
+      "inventory": {
+        "tool_artifacts": [
+          "sha256:980214c1f002f40ac30dd880feb3a5133833a23d6defee924e8ec0dbb51214f2"
+        ],
+        "egress_artifacts": [],
+        "file_artifacts": [
+          "sha256:6724c16763c5eeae708f5f46e0d7edb7a2dc1bf7c0652518a52d4a686d8ddf31"
+        ],
+        "payment_artifacts": [
+          "sha256:7f1ee85bf076aab98c8f9a459c9fee6ece4bfd3eded0c56bb0b5b819584e011e"
+        ]
+      },
+      "scope": {
+        "evidence": "artifact-digest-only",
+        "attestation": "not-implemented",
+        "observation": "not-implemented",
+        "retention": "not-measured",
+        "time": "not-authenticated",
+        "history": "not-checked"
+      }
+    }
+  },
+  "signature": "-bpjwvim5H6JnI6w0_fXjrLmM8GrkUsbKMRiJqDkseq4KOzQ6SMP-Cd2Ku1Ex1NRfaW3QR0VyB-gDBSlf5eMCQ",
+  "inclusion": {
+    "tree_size": "17",
+    "leaf_index": "15",
+    "path": [
+      "sha256:c2a725e559e5d62682df06274b63742584070aa0eec3021dff65eab76de81718",
+      "sha256:571efcfb7ac00aa00334728055476365adedcec4ca2645925eb48e5e335ebde8",
+      "sha256:818229f5a0fa79376135f3f01d7b88836e313cf2d1564c712f3eb0c924359ea1",
+      "sha256:db789c42f71f3ac1ef5d2be389cfd21bea0d490a7069ca3da2a874705f3db0aa",
+      "sha256:622a021556edb8bb6288878c69c2e52c55abef87984300e2709ee3134d1cefc8"
+    ]
+  }
+}

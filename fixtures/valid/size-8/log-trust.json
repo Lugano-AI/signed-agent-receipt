@@ -1,0 +1,10 @@
+{
+  "profile": "sar-ri-log-trust-v0.2",
+  "logs": [
+    {
+      "log_id": "fixture-log-v02",
+      "algorithm": "Ed25519",
+      "spki": "MCowBQYDK2VwAyEAYyJBSyXbRLn4_ve7AWtD-fqv8twTIpPyLl772_XsV10"
+    }
+  ]
+}

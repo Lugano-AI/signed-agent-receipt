@@ -1,0 +1,10 @@
+{
+  "profile": "sar-ri-issuer-trust-v0.2",
+  "issuers": [
+    {
+      "key_id": "fixture-issuer-v02",
+      "algorithm": "Ed25519",
+      "spki": "MCowBQYDK2VwAyEAEYZl1ILQOqeKvp1scGN2cm_IwWl3BdpGO8LVdvdmtUA"
+    }
+  ]
+}

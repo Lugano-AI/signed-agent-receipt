@@ -1,0 +1,45 @@
+{
+  "statement": {
+    "profile": "sar-ri-statement-v0.2",
+    "issuer": {
+      "algorithm": "Ed25519",
+      "key_id": "fixture-issuer-v02"
+    },
+    "receipt": {
+      "receipt_id": "fixture-17-11",
+      "log_id": "fixture-log-v02",
+      "assertions": {
+        "runtime_artifact": "sha256:f7cd82d8788974355958ba085a48817d80f35318e12f9ee34fd15e7c5d10cedc",
+        "policy_artifact": "sha256:ab6f3987e6f78090afb28d65c031e966212d912212862d3e03883c5046c6ccb3"
+      },
+      "inventory": {
+        "tool_artifacts": [
+          "sha256:a0ce148d4572c9b31201d75ae2b6f28578c0420772f94f16094c7894d41cd9d9"
+        ],
+        "egress_artifacts": [],
+        "file_artifacts": [],
+        "payment_artifacts": []
+      },
+      "scope": {
+        "evidence": "artifact-digest-only",
+        "attestation": "not-implemented",
+        "observation": "not-implemented",
+        "retention": "not-measured",
+        "time": "not-authenticated",
+        "history": "not-checked"
+      }
+    }
+  },
+  "signature": "uX0F8vWHSzYcSR19AIdUGMmlMDAX_H8YGyupH1bqg8PoX0jVbfSf0i0jXD8dnrKXnpzXISfOOKAXc4IkvEz6Aw",
+  "inclusion": {
+    "tree_size": "17",
+    "leaf_index": "11",
+    "path": [
+      "sha256:9c44a40df0bc1abb32b0d58dc71c382745346f5b67e387e51c39a009bb0c4d73",
+      "sha256:1dbef6b3198e92b87cde540656ce54cd922a1f70567fbc76b58b15a542a125e8",
+      "sha256:42c93b47586be15e8fe61c483bcdddabc707ac61ca7ea59cf6a36f0031ed5cb8",
+      "sha256:db789c42f71f3ac1ef5d2be389cfd21bea0d490a7069ca3da2a874705f3db0aa",
+      "sha256:622a021556edb8bb6288878c69c2e52c55abef87984300e2709ee3134d1cefc8"
+    ]
+  }
+}

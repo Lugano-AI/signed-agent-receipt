@@ -1,0 +1,761 @@
+{
+  "audit": "independent-sar-v0.2-hostile-input-audit",
+  "date": "2026-11-02",
+  "node": "v22.22.3",
+  "status": "PASS",
+  "limitations": [
+    "This is a bounded local code-and-fixture audit, not an independent human audit or production certification.",
+    "It does not observe an agent/runtime, validate hardware attestation, measure zero retention/deletion, verify a public log, prove append-only history, authenticate time, or verify a deployed service.",
+    "The input-path check verifies bounded local reads and FIFO rejection; it does not turn a mutable pathname into an authenticated immutable artifact source."
+  ],
+  "v02_manifest_before": [
+    {
+      "file": "cli/check.mjs",
+      "sha256": "1040299c872b485b789acc9ca051a9718e1b2686872374d3bfe0c459b0280062",
+      "bytes": 3778
+    },
+    {
+      "file": "fixtures/test-keys.mjs",
+      "sha256": "8174752582003369ac5b52f0cf24b564cde54e6e9571aa612c1350bbe3c7dec7",
+      "bytes": 777
+    },
+    {
+      "file": "fixtures/valid/size-1/issuer-trust.json",
+      "sha256": "44755a696cd0ba36036543e61c52634dfcca66f603a8c32f978b1bf67456105a",
+      "bytes": 220
+    },
+    {
+      "file": "fixtures/valid/size-1/log-trust.json",
+      "sha256": "ba1d74d0263472acd6e78547f92328a536890e1f216aecc52666ae19c27a8029",
+      "bytes": 211
+    },
+    {
+      "file": "fixtures/valid/size-1/manifest.json",
+      "sha256": "0fc0fb7631d1de83f0f5872581ef97f34753b9fbc7b971ddfed4c049b2fe0a65",
+      "bytes": 195
+    },
+    {
+      "file": "fixtures/valid/size-1/receipt-0.json",
+      "sha256": "4549fb872d3cea900c93f04d215c46f9e53ebdeb52a5e0f603573b7f6b74151d",
+      "bytes": 1456
+    },
+    {
+      "file": "fixtures/valid/size-1/tree-head.json",
+      "sha256": "80f9ebd1b2be8e9364a4d3871bff0322ecb737abbc72587ad28d89c41f98594d",
+      "bytes": 334
+    },
+    {
+      "file": "fixtures/valid/size-17/issuer-trust.json",
+      "sha256": "44755a696cd0ba36036543e61c52634dfcca66f603a8c32f978b1bf67456105a",
+      "bytes": 220
+    },
+    {
+      "file": "fixtures/valid/size-17/log-trust.json",
+      "sha256": "ba1d74d0263472acd6e78547f92328a536890e1f216aecc52666ae19c27a8029",
+      "bytes": 211
+    },
+    {
+      "file": "fixtures/valid/size-17/manifest.json",
+      "sha256": "ecdc1144ebeedcff9b641036a93929d417d894bf3ba067386a7e579024d3486e",
+      "bytes": 555
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-0.json",
+      "sha256": "15c200f82713ec70b1a36a010e19130f78530974664a757e13f9d4c424e9cf1f",
+      "bytes": 1867
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-1.json",
+      "sha256": "060a9ed1b2b4dc5c063353f36d5f84b9ac36467ce87d07f5dee1bdbbfd57bb2e",
+      "bytes": 1588
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-10.json",
+      "sha256": "8b30ec3bd90fec5d5f9573830407dc1f61294d020941c49cc971ccb2c624c436",
+      "bytes": 1776
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-11.json",
+      "sha256": "9185ded9c0cc5f7ab0bf8ecde6262aa0cbf0e27d90bb05c4e04edc198f3eeb75",
+      "bytes": 1590
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-12.json",
+      "sha256": "4839ffd02946144d7a3ef1a8fe127b6184151f34433a0d65f517c08b465af216",
+      "bytes": 1776
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-13.json",
+      "sha256": "2bdfeb1bb48d266b7b464113c41ccd5be32f06468efa3b41f5a998afcd20095c",
+      "bytes": 1590
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-14.json",
+      "sha256": "f008b8ac03f178ab2d6e06574f52f41d73a3bb2968261290893033340bdde2c6",
+      "bytes": 1683
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-15.json",
+      "sha256": "1312130077f9e6235f8e3e1fecd7c3fbf2f5f62cdb690fb5ea4a12654c927709",
+      "bytes": 1776
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-16.json",
+      "sha256": "a7382e55bb6cb085ccb1248d082759ff48e8c9d82cdf84b6e440cc37b50f35d8",
+      "bytes": 1359
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-2.json",
+      "sha256": "2f237e8be8f92b42d6bf02f9186aac1b4336f6df7c41632ca3dd4834dfebedd5",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-3.json",
+      "sha256": "59e8506c834f3f006d599d09dd82df02b8091ec83cc80152efecc11f0120c176",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-4.json",
+      "sha256": "c2b3630e3338c79ecef03baaa5689bc34d3aece9740cc479f32cc803c967a889",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-5.json",
+      "sha256": "9e7b1b3c05527d86d8ab266bd3a0c8606a8870047e78cb2ef729e8c7f371e4b1",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-6.json",
+      "sha256": "4b3793d84e8513aaea2ab5ff33f4a653896611208a3647b33aef83b0dcc77f6b",
+      "bytes": 1774
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-7.json",
+      "sha256": "fee344deb572c2e8cc85c33efd3750a56d98920d0aa04c34a9b05598a3467d79",
+      "bytes": 1588
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-8.json",
+      "sha256": "c1cc01c11ed65eb593e2edc47353f50ae681c21ee1ee924f3ef2aeb4465e5154",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-9.json",
+      "sha256": "3b839201becc4d1771e3ce16e28c048d61f12f75ad935f04b44aa6c153c10317",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/tree-head.json",
+      "sha256": "5f5ac56e607f0d2a026adfd1f345ef8656ef855f188665d606877d261c26eef8",
+      "bytes": 335
+    },
+    {
+      "file": "fixtures/valid/size-8/issuer-trust.json",
+      "sha256": "44755a696cd0ba36036543e61c52634dfcca66f603a8c32f978b1bf67456105a",
+      "bytes": 220
+    },
+    {
+      "file": "fixtures/valid/size-8/log-trust.json",
+      "sha256": "ba1d74d0263472acd6e78547f92328a536890e1f216aecc52666ae19c27a8029",
+      "bytes": 211
+    },
+    {
+      "file": "fixtures/valid/size-8/manifest.json",
+      "sha256": "ddf6a7496f36cd6c4898a8a158d4e441c1911b40afca1f6237a8035aee8ea438",
+      "bytes": 349
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-0.json",
+      "sha256": "93ecd57a7a67cd73765c4959fed9ac58b904dbbe714f2be12ac57801fc4b90d0",
+      "bytes": 1703
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-1.json",
+      "sha256": "374c7264a2a629799f29e344d85a46d3df4c6c1bb20c76c14e520e4492ff6216",
+      "bytes": 1424
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-2.json",
+      "sha256": "dbc064e83eae2266fc5815a939fd0c169fa4b9dde5953c25a43eb26677266def",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-3.json",
+      "sha256": "e0e64ec5c74c6fe5ffb540a80631a9f0fe1b2f24a9bb757e5f24082d19b99fe5",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-4.json",
+      "sha256": "1ceb3269673622b3baafa169ea1d2a9446da759ff3e43f5a7d1adec100854a34",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-5.json",
+      "sha256": "ef4425430b616bccf6f4be047ddcfce952cf5f684b077af01c7090a307910008",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-6.json",
+      "sha256": "3b38b81c58ede214bc388acedf2a9ae18533f94059fc1ed4f360b772f2e835d9",
+      "bytes": 1610
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-7.json",
+      "sha256": "e77190f9be96aeb3caea908322f8cd8bf636d7616d1e0e6fe147d1c7d1846656",
+      "bytes": 1424
+    },
+    {
+      "file": "fixtures/valid/size-8/tree-head.json",
+      "sha256": "85241ee92a52054b925530c437d6996df3a621fcf426040b4083ebae8f5c7e35",
+      "bytes": 334
+    },
+    {
+      "file": "README.md",
+      "sha256": "709f7c56682c1d888b11368e7f51baba1d5507b87ce7815d5b5d98b8d6bc6dd7",
+      "bytes": 3266
+    },
+    {
+      "file": "SPEC.md",
+      "sha256": "61461c9f6dcf80f77101330270737d7f523e0597364ec263e2c68f17331be77d",
+      "bytes": 19139
+    },
+    {
+      "file": "src/canonical.mjs",
+      "sha256": "e35cd7d8ef9df5ab8ab7b1a1e1988f4ea610b1899c721fcd5099f774cce84370",
+      "bytes": 1485
+    },
+    {
+      "file": "src/encoding.mjs",
+      "sha256": "c5ca67e963f59c29d9e3213296cbbbd82ea476828fa5fbea29ee79d033f5afa1",
+      "bytes": 2778
+    },
+    {
+      "file": "src/errors.mjs",
+      "sha256": "bb15b5dce504b1641a9f7c3394e98e8d7c32daa13be9266b7232693cc9aad6c4",
+      "bytes": 532
+    },
+    {
+      "file": "src/limits.mjs",
+      "sha256": "3075b0419de6bdf23044140da9df95564cad94263cf5ce5638600d1827c55bc8",
+      "bytes": 458
+    },
+    {
+      "file": "src/merkle.mjs",
+      "sha256": "0029718beaed3b05dc43f7a431ba2b9ef301de632d8813e163b890f23ff163a4",
+      "bytes": 3015
+    },
+    {
+      "file": "src/profile.mjs",
+      "sha256": "40bb9b1f8125fe6d472e87b0dbe36d572830cc7d1af27004ae7068d72d9f61fe",
+      "bytes": 8354
+    },
+    {
+      "file": "src/strict-json.mjs",
+      "sha256": "6f91cd85059e3bee7719f805d5df966ba5e5f975344dde28955c4cdfb951df69",
+      "bytes": 8052
+    },
+    {
+      "file": "src/verify.mjs",
+      "sha256": "d55729cf8b03717f6598a741c5d727988604e6f20cb7a7905fb370dc55821827",
+      "bytes": 6616
+    },
+    {
+      "file": "test/assertions.mjs",
+      "sha256": "b1502f1b4e2c1bc63962b1c90d0962df0b52abedd9ac8c5386cc87ad6c3e6762",
+      "bytes": 609
+    },
+    {
+      "file": "test/cli.test.mjs",
+      "sha256": "6694917239dac3e4ef6ae3a7cd8baae71f18a11f5f59a851f7608527fcf70fae",
+      "bytes": 4243
+    },
+    {
+      "file": "test/crypto-and-bytes.test.mjs",
+      "sha256": "d16a717b50e2ed0aa3af6657e3babbfb37c5308d9b0846744e5b69c5f60491ce",
+      "bytes": 3013
+    },
+    {
+      "file": "test/merkle.test.mjs",
+      "sha256": "6d1627a7b4c04a593c082aa4cd4fd1a4fa26131040958045d090ad41aaddeab3",
+      "bytes": 2536
+    },
+    {
+      "file": "test/oracle.mjs",
+      "sha256": "03d45a4fb494cd02781efd4956682c050306ac92221b6bfade8fa93b4584d93a",
+      "bytes": 2135
+    },
+    {
+      "file": "test/run.mjs",
+      "sha256": "1428e73f4d56ebf0af802ead4e90f54e9cd2ba73692e762f98eb65a12e557de0",
+      "bytes": 1096
+    },
+    {
+      "file": "test/strict-json.test.mjs",
+      "sha256": "5a9875247b7156d43114ab4a463b5d5116d02b36b953c0e0f561b4a2a5c8b2f2",
+      "bytes": 4106
+    },
+    {
+      "file": "test/verifier.test.mjs",
+      "sha256": "fa3b796d7181ae4981f3708e2fd7cf4d357117f61388521ebfc478d8cfd33b71",
+      "bytes": 11437
+    },
+    {
+      "file": "tools/fixture-api.mjs",
+      "sha256": "1c66b0c29aa4ebbea2f1cbc066a33f83d856f335c5ab29df5d6fe48d24a04ab4",
+      "bytes": 6781
+    },
+    {
+      "file": "tools/make-fixtures.mjs",
+      "sha256": "6140e9646ca61acebffd58db391fb679c2e2d2f80217ef9ee5de63b2ce219327",
+      "bytes": 2324
+    },
+    {
+      "file": "validation/implementation-tests.txt",
+      "sha256": "7b2827996f8cc74d20a3ad30b4d3ad4c616bc340e743b31433e1b32899b765ac",
+      "bytes": 197
+    },
+    {
+      "file": "validation/independent-rfc9162-oracle.mjs",
+      "sha256": "3916c9ecf1e2cf4b8290aa7ba16de640c3416412e6ec3123a41241495f25f407",
+      "bytes": 4180
+    },
+    {
+      "file": "validation/independent-v02-audit.mjs",
+      "sha256": "72f526a6864d130deca3dc732c880f61bd597f43a250cab8f281b560e58257ed",
+      "bytes": 35900
+    },
+    {
+      "file": "validation/README.txt",
+      "sha256": "8d43e6febe6cff3c013ede97e029e632a98bbf0c71424ff5968f58c511c236b5",
+      "bytes": 5308
+    }
+  ],
+  "v02_manifest_after": [
+    {
+      "file": "cli/check.mjs",
+      "sha256": "1040299c872b485b789acc9ca051a9718e1b2686872374d3bfe0c459b0280062",
+      "bytes": 3778
+    },
+    {
+      "file": "fixtures/test-keys.mjs",
+      "sha256": "8174752582003369ac5b52f0cf24b564cde54e6e9571aa612c1350bbe3c7dec7",
+      "bytes": 777
+    },
+    {
+      "file": "fixtures/valid/size-1/issuer-trust.json",
+      "sha256": "44755a696cd0ba36036543e61c52634dfcca66f603a8c32f978b1bf67456105a",
+      "bytes": 220
+    },
+    {
+      "file": "fixtures/valid/size-1/log-trust.json",
+      "sha256": "ba1d74d0263472acd6e78547f92328a536890e1f216aecc52666ae19c27a8029",
+      "bytes": 211
+    },
+    {
+      "file": "fixtures/valid/size-1/manifest.json",
+      "sha256": "0fc0fb7631d1de83f0f5872581ef97f34753b9fbc7b971ddfed4c049b2fe0a65",
+      "bytes": 195
+    },
+    {
+      "file": "fixtures/valid/size-1/receipt-0.json",
+      "sha256": "4549fb872d3cea900c93f04d215c46f9e53ebdeb52a5e0f603573b7f6b74151d",
+      "bytes": 1456
+    },
+    {
+      "file": "fixtures/valid/size-1/tree-head.json",
+      "sha256": "80f9ebd1b2be8e9364a4d3871bff0322ecb737abbc72587ad28d89c41f98594d",
+      "bytes": 334
+    },
+    {
+      "file": "fixtures/valid/size-17/issuer-trust.json",
+      "sha256": "44755a696cd0ba36036543e61c52634dfcca66f603a8c32f978b1bf67456105a",
+      "bytes": 220
+    },
+    {
+      "file": "fixtures/valid/size-17/log-trust.json",
+      "sha256": "ba1d74d0263472acd6e78547f92328a536890e1f216aecc52666ae19c27a8029",
+      "bytes": 211
+    },
+    {
+      "file": "fixtures/valid/size-17/manifest.json",
+      "sha256": "ecdc1144ebeedcff9b641036a93929d417d894bf3ba067386a7e579024d3486e",
+      "bytes": 555
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-0.json",
+      "sha256": "15c200f82713ec70b1a36a010e19130f78530974664a757e13f9d4c424e9cf1f",
+      "bytes": 1867
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-1.json",
+      "sha256": "060a9ed1b2b4dc5c063353f36d5f84b9ac36467ce87d07f5dee1bdbbfd57bb2e",
+      "bytes": 1588
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-10.json",
+      "sha256": "8b30ec3bd90fec5d5f9573830407dc1f61294d020941c49cc971ccb2c624c436",
+      "bytes": 1776
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-11.json",
+      "sha256": "9185ded9c0cc5f7ab0bf8ecde6262aa0cbf0e27d90bb05c4e04edc198f3eeb75",
+      "bytes": 1590
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-12.json",
+      "sha256": "4839ffd02946144d7a3ef1a8fe127b6184151f34433a0d65f517c08b465af216",
+      "bytes": 1776
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-13.json",
+      "sha256": "2bdfeb1bb48d266b7b464113c41ccd5be32f06468efa3b41f5a998afcd20095c",
+      "bytes": 1590
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-14.json",
+      "sha256": "f008b8ac03f178ab2d6e06574f52f41d73a3bb2968261290893033340bdde2c6",
+      "bytes": 1683
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-15.json",
+      "sha256": "1312130077f9e6235f8e3e1fecd7c3fbf2f5f62cdb690fb5ea4a12654c927709",
+      "bytes": 1776
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-16.json",
+      "sha256": "a7382e55bb6cb085ccb1248d082759ff48e8c9d82cdf84b6e440cc37b50f35d8",
+      "bytes": 1359
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-2.json",
+      "sha256": "2f237e8be8f92b42d6bf02f9186aac1b4336f6df7c41632ca3dd4834dfebedd5",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-3.json",
+      "sha256": "59e8506c834f3f006d599d09dd82df02b8091ec83cc80152efecc11f0120c176",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-4.json",
+      "sha256": "c2b3630e3338c79ecef03baaa5689bc34d3aece9740cc479f32cc803c967a889",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-5.json",
+      "sha256": "9e7b1b3c05527d86d8ab266bd3a0c8606a8870047e78cb2ef729e8c7f371e4b1",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-6.json",
+      "sha256": "4b3793d84e8513aaea2ab5ff33f4a653896611208a3647b33aef83b0dcc77f6b",
+      "bytes": 1774
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-7.json",
+      "sha256": "fee344deb572c2e8cc85c33efd3750a56d98920d0aa04c34a9b05598a3467d79",
+      "bytes": 1588
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-8.json",
+      "sha256": "c1cc01c11ed65eb593e2edc47353f50ae681c21ee1ee924f3ef2aeb4465e5154",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/receipt-9.json",
+      "sha256": "3b839201becc4d1771e3ce16e28c048d61f12f75ad935f04b44aa6c153c10317",
+      "bytes": 1681
+    },
+    {
+      "file": "fixtures/valid/size-17/tree-head.json",
+      "sha256": "5f5ac56e607f0d2a026adfd1f345ef8656ef855f188665d606877d261c26eef8",
+      "bytes": 335
+    },
+    {
+      "file": "fixtures/valid/size-8/issuer-trust.json",
+      "sha256": "44755a696cd0ba36036543e61c52634dfcca66f603a8c32f978b1bf67456105a",
+      "bytes": 220
+    },
+    {
+      "file": "fixtures/valid/size-8/log-trust.json",
+      "sha256": "ba1d74d0263472acd6e78547f92328a536890e1f216aecc52666ae19c27a8029",
+      "bytes": 211
+    },
+    {
+      "file": "fixtures/valid/size-8/manifest.json",
+      "sha256": "ddf6a7496f36cd6c4898a8a158d4e441c1911b40afca1f6237a8035aee8ea438",
+      "bytes": 349
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-0.json",
+      "sha256": "93ecd57a7a67cd73765c4959fed9ac58b904dbbe714f2be12ac57801fc4b90d0",
+      "bytes": 1703
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-1.json",
+      "sha256": "374c7264a2a629799f29e344d85a46d3df4c6c1bb20c76c14e520e4492ff6216",
+      "bytes": 1424
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-2.json",
+      "sha256": "dbc064e83eae2266fc5815a939fd0c169fa4b9dde5953c25a43eb26677266def",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-3.json",
+      "sha256": "e0e64ec5c74c6fe5ffb540a80631a9f0fe1b2f24a9bb757e5f24082d19b99fe5",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-4.json",
+      "sha256": "1ceb3269673622b3baafa169ea1d2a9446da759ff3e43f5a7d1adec100854a34",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-5.json",
+      "sha256": "ef4425430b616bccf6f4be047ddcfce952cf5f684b077af01c7090a307910008",
+      "bytes": 1517
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-6.json",
+      "sha256": "3b38b81c58ede214bc388acedf2a9ae18533f94059fc1ed4f360b772f2e835d9",
+      "bytes": 1610
+    },
+    {
+      "file": "fixtures/valid/size-8/receipt-7.json",
+      "sha256": "e77190f9be96aeb3caea908322f8cd8bf636d7616d1e0e6fe147d1c7d1846656",
+      "bytes": 1424
+    },
+    {
+      "file": "fixtures/valid/size-8/tree-head.json",
+      "sha256": "85241ee92a52054b925530c437d6996df3a621fcf426040b4083ebae8f5c7e35",
+      "bytes": 334
+    },
+    {
+      "file": "README.md",
+      "sha256": "709f7c56682c1d888b11368e7f51baba1d5507b87ce7815d5b5d98b8d6bc6dd7",
+      "bytes": 3266
+    },
+    {
+      "file": "SPEC.md",
+      "sha256": "61461c9f6dcf80f77101330270737d7f523e0597364ec263e2c68f17331be77d",
+      "bytes": 19139
+    },
+    {
+      "file": "src/canonical.mjs",
+      "sha256": "e35cd7d8ef9df5ab8ab7b1a1e1988f4ea610b1899c721fcd5099f774cce84370",
+      "bytes": 1485
+    },
+    {
+      "file": "src/encoding.mjs",
+      "sha256": "c5ca67e963f59c29d9e3213296cbbbd82ea476828fa5fbea29ee79d033f5afa1",
+      "bytes": 2778
+    },
+    {
+      "file": "src/errors.mjs",
+      "sha256": "bb15b5dce504b1641a9f7c3394e98e8d7c32daa13be9266b7232693cc9aad6c4",
+      "bytes": 532
+    },
+    {
+      "file": "src/limits.mjs",
+      "sha256": "3075b0419de6bdf23044140da9df95564cad94263cf5ce5638600d1827c55bc8",
+      "bytes": 458
+    },
+    {
+      "file": "src/merkle.mjs",
+      "sha256": "0029718beaed3b05dc43f7a431ba2b9ef301de632d8813e163b890f23ff163a4",
+      "bytes": 3015
+    },
+    {
+      "file": "src/profile.mjs",
+      "sha256": "40bb9b1f8125fe6d472e87b0dbe36d572830cc7d1af27004ae7068d72d9f61fe",
+      "bytes": 8354
+    },
+    {
+      "file": "src/strict-json.mjs",
+      "sha256": "6f91cd85059e3bee7719f805d5df966ba5e5f975344dde28955c4cdfb951df69",
+      "bytes": 8052
+    },
+    {
+      "file": "src/verify.mjs",
+      "sha256": "d55729cf8b03717f6598a741c5d727988604e6f20cb7a7905fb370dc55821827",
+      "bytes": 6616
+    },
+    {
+      "file": "test/assertions.mjs",
+      "sha256": "b1502f1b4e2c1bc63962b1c90d0962df0b52abedd9ac8c5386cc87ad6c3e6762",
+      "bytes": 609
+    },
+    {
+      "file": "test/cli.test.mjs",
+      "sha256": "6694917239dac3e4ef6ae3a7cd8baae71f18a11f5f59a851f7608527fcf70fae",
+      "bytes": 4243
+    },
+    {
+      "file": "test/crypto-and-bytes.test.mjs",
+      "sha256": "d16a717b50e2ed0aa3af6657e3babbfb37c5308d9b0846744e5b69c5f60491ce",
+      "bytes": 3013
+    },
+    {
+      "file": "test/merkle.test.mjs",
+      "sha256": "6d1627a7b4c04a593c082aa4cd4fd1a4fa26131040958045d090ad41aaddeab3",
+      "bytes": 2536
+    },
+    {
+      "file": "test/oracle.mjs",
+      "sha256": "03d45a4fb494cd02781efd4956682c050306ac92221b6bfade8fa93b4584d93a",
+      "bytes": 2135
+    },
+    {
+      "file": "test/run.mjs",
+      "sha256": "1428e73f4d56ebf0af802ead4e90f54e9cd2ba73692e762f98eb65a12e557de0",
+      "bytes": 1096
+    },
+    {
+      "file": "test/strict-json.test.mjs",
+      "sha256": "5a9875247b7156d43114ab4a463b5d5116d02b36b953c0e0f561b4a2a5c8b2f2",
+      "bytes": 4106
+    },
+    {
+      "file": "test/verifier.test.mjs",
+      "sha256": "fa3b796d7181ae4981f3708e2fd7cf4d357117f61388521ebfc478d8cfd33b71",
+      "bytes": 11437
+    },
+    {
+      "file": "tools/fixture-api.mjs",
+      "sha256": "1c66b0c29aa4ebbea2f1cbc066a33f83d856f335c5ab29df5d6fe48d24a04ab4",
+      "bytes": 6781
+    },
+    {
+      "file": "tools/make-fixtures.mjs",
+      "sha256": "6140e9646ca61acebffd58db391fb679c2e2d2f80217ef9ee5de63b2ce219327",
+      "bytes": 2324
+    },
+    {
+      "file": "validation/implementation-tests.txt",
+      "sha256": "7b2827996f8cc74d20a3ad30b4d3ad4c616bc340e743b31433e1b32899b765ac",
+      "bytes": 197
+    },
+    {
+      "file": "validation/independent-rfc9162-oracle.mjs",
+      "sha256": "3916c9ecf1e2cf4b8290aa7ba16de640c3416412e6ec3123a41241495f25f407",
+      "bytes": 4180
+    },
+    {
+      "file": "validation/independent-v02-audit.mjs",
+      "sha256": "72f526a6864d130deca3dc732c880f61bd597f43a250cab8f281b560e58257ed",
+      "bytes": 35900
+    },
+    {
+      "file": "validation/README.txt",
+      "sha256": "8d43e6febe6cff3c013ede97e029e632a98bbf0c71424ff5968f58c511c236b5",
+      "bytes": 5308
+    }
+  ],
+  "cases": [
+    {
+      "name": "node-ed25519-rfc8032-vector-1",
+      "status": "PASS",
+      "vector": "RFC 8032 section 7.1 test vector 1"
+    },
+    {
+      "name": "unicode-sort-and-independent-canonical-bytes",
+      "status": "PASS",
+      "expected_utf16_order": [
+        "\r",
+        "1",
+        "",
+        "ö",
+        "€",
+        "😀",
+        "דּ"
+      ]
+    },
+    {
+      "name": "strict-parser-hostile-raw-inputs",
+      "status": "PASS",
+      "rejected_cases": 18,
+      "decoded_duplicate_keys": true,
+      "prototype_pollution": "not observed"
+    },
+    {
+      "name": "independent-path-length-boundaries",
+      "status": "PASS",
+      "dimensions_checked": 8264,
+      "maximum_tree_size": 2147483647
+    },
+    {
+      "name": "valid-direct-matrix-every-index-sizes-1-through-64",
+      "status": "PASS",
+      "valid_vectors": 2080,
+      "sizes": "1..64",
+      "independent_tree_oracle": true
+    },
+    {
+      "name": "canonical-whitespace-and-member-order-are-signed-by-canonical-form",
+      "status": "PASS",
+      "reordered_and_whitespace_variant": "accepted with original valid signature"
+    },
+    {
+      "name": "hostile-proof-and-cryptographic-mutations",
+      "status": "PASS",
+      "rejected_mutations": 17,
+      "mutations": [
+        "issuer-signature-bit-flip",
+        "tree-head-signature-bit-flip",
+        "proof-sibling-bit-flip",
+        "proof-reordered",
+        "proof-short-before-tree-head",
+        "proof-long-before-tree-head",
+        "proof-wrong-index",
+        "proof-wrong-tree-size",
+        "signed-head-wrong-root",
+        "signed-head-log-id-mismatch",
+        "signed-head-tree-size-mismatch",
+        "issuer-signature-head-domain",
+        "tree-head-signature-issuer-domain",
+        "noncanonical-digest-case",
+        "padded-signature",
+        "receipt-embedded-trust",
+        "issuer-algorithm-confusion"
+      ]
+    },
+    {
+      "name": "trust-substitution-key-type-and-role-separation",
+      "status": "PASS",
+      "trust_substitution": "rejected",
+      "same_key_standard": "rejected",
+      "same_key_alternate_spki": "log_trust"
+    },
+    {
+      "name": "strict-receipt-schema-and-untrusted-boundary",
+      "status": "PASS",
+      "unknown_fields": "rejected",
+      "external_trust_absent": "untrusted-not-passed"
+    },
+    {
+      "name": "fixture-tool-and-cli-real-artifact-path",
+      "status": "PASS",
+      "generated_tree_size": 17,
+      "generated_root": "sha256:d38f73920288b9b845c1606cd755d9708bdd9e58b5c941085fe502c677c7ad92",
+      "cli_receipts_checked": 17,
+      "overwrite": "refused"
+    },
+    {
+      "name": "cli-errors-bounds-and-nonregular-input",
+      "status": "PASS",
+      "valid": 0,
+      "untrusted": 3,
+      "usage_errors": 2,
+      "malformed_or_file_errors": 1,
+      "fifo": "nonblocking rejection"
+    },
+    {
+      "name": "shipped-test-suite-and-syntax",
+      "status": "PASS",
+      "shipped_test_runner": "passed",
+      "syntax_checked_modules": 22
+    }
+  ],
+  "failures": []
+}

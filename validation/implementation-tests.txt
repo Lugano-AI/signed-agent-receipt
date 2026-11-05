@@ -1,0 +1,6 @@
+PASS strict JSON and canonical bytes
+PASS crypto and fixed byte vectors
+PASS independent Merkle oracle
+PASS profile verifier
+PASS CLI and independent fixture generator
+ALL SAR-RI v0.2 TESTS PASSED

@@ -1,0 +1,8 @@
+{
+  "profile": "sar-ri-fixture-set-v0.2",
+  "tree_size": "1",
+  "root": "sha256:0dd622acf657cbd726fc13d11917a82384da024766a28f664c0c34bce2b1aca0",
+  "receipt_files": [
+    "receipt-0.json"
+  ]
+}
