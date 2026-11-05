@@ -1,0 +1,24 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite it as below."
+type: software
+title: "Signed Agent Receipt v0.2: reference verifier, tests and fixtures"
+authors:
+  - name: "Lugano Labs"
+version: "0.2"
+license: Apache-2.0
+repository-code: "https://github.com/Lugano-AI/signed-agent-receipt"
+url: "https://lugano.ai/research/attested-agent-receipt/"
+abstract: "A strict signed format for an AI agent's task record, with an offline reference verifier, tests and fixtures. A pass shows that keys the recipient chose signed and logged the record's bytes. It does not show that the recorded events happened."
+keywords:
+  - "AI agents"
+  - "signed records"
+  - "transparency logs"
+  - "Merkle proofs"
+preferred-citation:
+  type: report
+  title: "What should an agent receipt be able to prove?"
+  authors:
+    - name: "Lugano Labs"
+  institution:
+    name: "Lugano Labs"
+  url: "https://lugano.ai/research/attested-agent-receipt/"
