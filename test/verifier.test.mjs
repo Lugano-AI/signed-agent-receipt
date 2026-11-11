@@ -75,7 +75,10 @@ export function runVerifierTests() {
   assert.equal(success.result, RESULT.PASSED);
   const rendered = renderReport(success);
   assert.match(rendered, /RESULT: ARTIFACT CHECKS PASSED/);
-  assert.match(rendered, /NOT ESTABLISHED: agent execution/);
+  assert.match(rendered, /NOT ESTABLISHED: /);
+  for (const phrase of ["the issuer is honest", "inventory is complete", "agent execution", "freshness or uniqueness", "a public log", "append-only history"]) {
+    assert(rendered.includes(phrase), `pass output must list as not established: ${phrase}`);
+  }
   assert.doesNotMatch(rendered, /VERIFIED/);
 
   const noTrust = checkArtifacts({ receiptBytes: bytes(valid) });

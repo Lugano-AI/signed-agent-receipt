@@ -213,7 +213,7 @@ function validateTrustEntries(value, kind) {
     try {
       key = parseEd25519Spki(record.spki);
     } catch (error) {
-      fail(["wrong-public-key-type", "noncanonical-ed25519-spki"].includes(error?.code) ? error.code : envelopeCode);
+      fail(["wrong-public-key-type", "noncanonical-ed25519-spki", "noncanonical-ed25519-point", "weak-ed25519-public-key"].includes(error?.code) ? error.code : envelopeCode);
     }
     // Compare exported canonical DER in the verifier, rather than the textual
     // trust spelling, when enforcing issuer/log key-role separation.

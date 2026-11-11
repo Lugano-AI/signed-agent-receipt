@@ -4,12 +4,14 @@ import { runCryptoAndByteTests } from "./crypto-and-bytes.test.mjs";
 import { runMerkleTests } from "./merkle.test.mjs";
 import { runStrictJsonTests } from "./strict-json.test.mjs";
 import { runVerifierTests } from "./verifier.test.mjs";
+import { runWeakKeyTests } from "./weak-keys.test.mjs";
 
 const suites = [
   ["strict JSON and canonical bytes", runStrictJsonTests],
   ["crypto and fixed byte vectors", runCryptoAndByteTests],
   ["independent Merkle oracle", runMerkleTests],
   ["profile verifier", runVerifierTests],
+  ["weak and non-canonical trust keys", runWeakKeyTests],
   ["CLI and independent fixture generator", runCliTests],
 ];
 

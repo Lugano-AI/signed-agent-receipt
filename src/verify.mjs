@@ -154,7 +154,7 @@ export function renderReport(report) {
   lines.push("");
   lines.push(`RESULT: ${report.result}`);
   lines.push("ESTABLISHED SCOPE: bounded statement schema, trusted issuer signature, and inclusion against a separately trusted signed tree-head snapshot only when RESULT is ARTIFACT CHECKS PASSED.");
-  lines.push("NOT ESTABLISHED: agent execution, event observation, hardware attestation, deletion or retention, trusted time, append-only history or consistency, production safety, or completed research.");
+  lines.push("NOT ESTABLISHED: that the issuer is honest, that any artifact digest matches a real artifact, that the inventory is complete, agent execution, event observation, a runtime measurement or hardware attestation, deletion or retention, hardware key protection, trusted time, freshness or uniqueness, a public log, append-only history or consistency, production safety, or completed research.");
   return `${lines.join("\n")}\n`;
 }
 

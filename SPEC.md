@@ -193,6 +193,8 @@ LogTrust = {
 
 Each object has exactly the members shown. Each array has at most 16 entries and no duplicate decoded IDs. An `spki` decodes to 32 through 1024 bytes, is canonical unpadded base64url, and MUST be canonical DER for an Ed25519 SubjectPublicKeyInfo: parse it as Ed25519, re-export its SPKI DER, and require byte-for-byte equality with the decoded input. After the matching issuer and log trust entries are selected, their canonical public-key material MUST differ. An algorithm string, a key ID, or an SPKI in a receipt never causes trust; only the relying party's matching external trust entry does.
 
+The 32-byte Ed25519 public key in each trust `spki` MUST be a canonical point encoding and MUST NOT be a point of order 1, 2, 4 or 8. Read the 32 bytes as a little-endian integer and clear bit 255 (the sign of x); call the result y. First, if y is not below 2^255 - 19, reject the key with `noncanonical-ed25519-point`. Then, if y is one of the five small-order values, reject it with `weak-ed25519-public-key`, whatever the sign bit. As little-endian hex with bit 255 cleared, the five values are `0000000000000000000000000000000000000000000000000000000000000000` (order 4), `0100000000000000000000000000000000000000000000000000000000000000` (order 1), `ecffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7f` (order 2), `26e8958fc2b227b045c3f489f2ef98f0d5dfac05d3c63339b13802886d53fc05` (order 8) and `c7176a703d4dd84fba3c0b760d10670f2a2053fa2c39ccc64ec7fd7792ac037a` (order 8). Under a small-order key, a signature nobody made can verify. These rules make two accepted keys equal exactly when they are the same point. Different key bytes still don't show different key holders. Post-review change, 11 November 2026.
+
 ## 9. Bounds and rejection behavior
 
 The checker MUST fail safely when an input exceeds a bound. These are parser and verifier bounds, not a general denial-of-service guarantee.
@@ -240,7 +242,7 @@ An implementation claiming compatibility with this profile MUST run and disclose
 3. Number-token inputs such as `{"n":1}` and `{"n":1e+30}` must be rejected rather than serialized. This is a negative profile test, not an implementation of RFC 8785 number serialization.
 4. Fixed synthetic statement and head fixtures that expose the complete ASCII domain labels, canonical byte strings, SHA-256 leaf/root values, and Ed25519 signatures used by this profile.
 5. Independent-oracle Merkle cases for size 1, powers of two, and uneven tree sizes; every leaf position; and truncated, extra, reordered, and corrupted paths.
-6. Negative strict-input cases: duplicate decoded names, malformed UTF-8, BOM, lone surrogates, noncanonical base64url or SPKI DER, wrong algorithm/key type, missing fields, unknown fields, excess nesting/size, and trust-ID substitution.
+6. Negative strict-input cases: duplicate decoded names, malformed UTF-8, BOM, lone surrogates, noncanonical base64url or SPKI DER, small-order or noncanonical Ed25519 points, wrong algorithm/key type, missing fields, unknown fields, excess nesting/size, and trust-ID substitution.
 
 These vectors prove only the cases tested. They are not a security audit, production readiness determination, vendor attestation validation, or empirical study.
 

@@ -50,6 +50,10 @@ v0.2 is intentionally incompatible with the historical AAR v0.1 draft and verifi
 The portable validation bundle is described in [validation/README.txt](validation/README.txt). It records the deterministic fixture/test evidence distributed with this profile; it is not a production or research-study record.
 
 
+## Changes
+
+**11 November 2026.** The checker now refuses a trust key that is a small-order or non-canonical Ed25519 point. Under a small-order key, anyone can make a signature that verifies, so a trust file that listed such a key let a forged receipt pass. One weak point written in two ways could also pass as both the issuer key and the log key. We found both problems in our own review. The rule is in [SPEC.md](SPEC.md#8-trust-file-schemas) section 8, and `test/weak-keys.test.mjs` tests it. A pass also now prints every limit in section 1 of the specification. Before, it printed a shorter list.
+
 ## License
 
 Apache License 2.0. See [LICENSE](LICENSE). Copyright 2026 Lugano AI Holdings LLC.

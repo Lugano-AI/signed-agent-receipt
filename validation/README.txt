@@ -3,6 +3,13 @@ implementation-tests.txt and SHA256SUMS this file names are not published on
 lugano.ai, so the commands below can't be run from the site. This file is a
 summary of an internal review record.
 
+NOTE (11 November 2026): Three source files and two tests changed after the
+review, and one test was added, so that the checker refuses weak trust keys.
+See "Changes" in README.md. Of the 64 files in results.json, 56 still match
+their recorded hashes. The other 8 are those five files and three documents
+edited after the review: README.md, SPEC.md and this file. SHA256SUMS lists
+the current files.
+
 Signed Agent Receipt v0.2 — internal review record
 2 November 2026
 
