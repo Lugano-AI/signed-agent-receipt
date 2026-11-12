@@ -35,7 +35,7 @@ An exit 0 does not establish that the signed fields are true, complete, fresh, o
 
 ## Trust boundary
 
-The receipt contains only key and log identifiers. The trusted Ed25519 SPKIs live in separate issuer and log trust files chosen by the relying party. Nothing embedded in a receipt can enroll, replace, or authorize a key. Trust-file delivery, rotation, revocation, and compromise response are out of scope.
+The receipt contains only key and log identifiers. The trusted Ed25519 SPKIs live in separate issuer and log trust files chosen by the relying party. Nothing embedded in a receipt can enroll, replace, or authorize a key. The checker refuses a trust key that is a small-order or non-canonical Ed25519 point, since anyone can make a signature that verifies under a small-order key ([SPEC.md](SPEC.md#8-trust-file-schemas) section 8). Trust-file delivery, rotation, revocation, and compromise response are out of scope.
 
 The tree head is a profile-specific signed root snapshot. The profile reuses the bounded RFC 9162 Merkle tree recurrence, but is not an RFC 9162/Certificate Transparency implementation. There is no timestamp, consistency proof, monitor, public-log query, or append-only-history result.
 
@@ -50,9 +50,20 @@ v0.2 is intentionally incompatible with the historical AAR v0.1 draft and verifi
 The portable validation bundle is described in [validation/README.txt](validation/README.txt). It records the deterministic fixture/test evidence distributed with this profile; it is not a production or research-study record.
 
 
-## Changes
+## Release and review
 
-**11 November 2026.** The checker now refuses a trust key that is a small-order or non-canonical Ed25519 point. Under a small-order key, anyone can make a signature that verifies, so a trust file that listed such a key let a forged receipt pass. One weak point written in two ways could also pass as both the issuer key and the log key. We found both problems in our own review. The rule is in [SPEC.md](SPEC.md#8-trust-file-schemas) section 8, and `test/weak-keys.test.mjs` tests it. A pass also now prints every limit in section 1 of the specification. Before, it printed a shorter list.
+| | |
+|---|---|
+| Specification | [SPEC.md](SPEC.md), profile v0.2: `sar-ri-statement-v0.2`, `sar-ri-tree-head-v0.2`, `sar-ri-issuer-trust-v0.2`, `sar-ri-log-trust-v0.2` |
+| Code, tests and fixtures | Commit `3ccd846ca2fe7d83d8eb17ceb3f3de60366cacdc`. [SHA256SUMS](SHA256SUMS) lists the hash of every file except itself, LICENSE and CITATION.cff. |
+| Verifier | `src/` and `cli/check.mjs`, 1,026 lines of JavaScript |
+| Dependencies | Node.js 22 or newer and its built-in modules. There's no package.json, lockfile or third-party code. Ed25519 and SHA-256 come from the OpenSSL inside Node. |
+| Fixtures | `fixtures/valid/size-1`, `size-8` and `size-17`: 26 synthetic receipts, made with the public test keys in `fixtures/test-keys.mjs` |
+| Tests | `node test/run.mjs` runs six suites. On 11 November 2026, on Node v22.22.3 (OpenSSL 3.5.6, macOS arm64), all six passed. |
+| Hostile-input cases | `node validation/independent-v02-audit.mjs --output /tmp/sar-v02-run.json` runs 12 cases. All 12 passed in the same run. The FIFO case needs a POSIX system with `mkfifo`. |
+| Review | The internal review of 2 November 2026 ([validation/README.txt](validation/README.txt); cases and file hashes in `validation/results.json`) covers commit `221cfcf407b31ed719f1541230d44ac64f3002fe`. The trust-key rule in SPEC.md section 8 (`src/encoding.mjs`, `test/weak-keys.test.mjs`) is in commit `3ccd846`. The shipped tests cover it, and the review doesn't. |
+| Outside review | None yet, of the cryptographic design or the code |
+| What a pass means | [SPEC.md section 1](SPEC.md#1-what-an-artifact-check-pass-establishes) |
 
 ## License
 

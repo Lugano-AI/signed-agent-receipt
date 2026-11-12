@@ -1,14 +1,14 @@
-NOTE (4 November 2026): The source code, tests, fixtures, results.json,
-implementation-tests.txt and SHA256SUMS this file names are not published on
-lugano.ai, so the commands below can't be run from the site. This file is a
-summary of an internal review record.
+SCOPE OF THIS REVIEW
 
-NOTE (11 November 2026): Three source files and two tests changed after the
-review, and one test was added, so that the checker refuses weak trust keys.
-See "Changes" in README.md. Of the 64 files in results.json, 56 still match
-their recorded hashes. The other 8 are those five files and three documents
-edited after the review: README.md, SPEC.md and this file. SHA256SUMS lists
-the current files.
+This file summarizes an internal review record. Of the 64 files
+that results.json lists with their SHA-256 hashes, the 61 code, test,
+fixture and tool files match commit 221cfcf407b31ed719f1541230d44ac64f3002fe
+byte for byte. The other three are review drafts of README.md, SPEC.md and
+this file. The trust-key
+rule in section 8 of SPEC.md, its code and test/weak-keys.test.mjs are in
+commit 3ccd846ca2fe7d83d8eb17ceb3f3de60366cacdc, which this review doesn't
+cover. The shipped tests cover that rule. SHA256SUMS lists the files of the
+current revision.
 
 Signed Agent Receipt v0.2 — internal review record
 2 November 2026
@@ -101,8 +101,8 @@ about those cases and exact files, not proof that no defects remain.
 PROVENANCE AND LIMITS
 
 results.json contains before/after hashes of the implementation, fixtures,
-tests, specification, and this harness. SHA256SUMS covers all bundled files
-except itself, including the recorded results. It detects changes relative to
+tests, specification, and this harness. SHA256SUMS covers every bundled file
+except itself, LICENSE and CITATION.cff, including the recorded results. It detects changes relative to
 this package; it is not an externally signed release or authenticity service.
 
 The proposed richer/minimized-record privacy study on the research pages has
